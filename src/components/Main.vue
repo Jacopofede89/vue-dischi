@@ -1,32 +1,48 @@
 <template>
       <section>
-          <div v-if="cards.length===0">LOADINDG</div>
+          <div id="selector">
+          <FilterAlbum @search="searching"/>
+          </div>
+          <div v-if="cards.length===0">LOADING</div>
           <div v-else id="list">
           <Maincards
-          v-for="card, i in cards"
+          v-for="card, i in filteredListDisk"
           :key="i"
           :details="card"/>
-      </div>
+        </div>
       </section>
 </template>
 
 <script>
+import FilterAlbum from '@/components/FilterAlbum.vue'
 import axios from "axios";
 import Maincards from "@/components/Maincards.vue";
 export default {
   name: "Main",
   components: {
       Maincards,
+      FilterAlbum
   },
  data() {
       return{
           apiUrl:"https://flynn.boolean.careers/exercises/api/array/music",
-          cards: [], 
+          cards: [],
+          search: "", 
         }
 },
 created(){
     this.cardMusic();
 },
+computed:{
+    filteredListDisk(){
+      if(this.search === "all"){
+        return this.cards
+      }
+      return this.cards.filter((item) => {
+        return item.genre.toLowerCase().includes(this.search.toLowerCase())
+      })
+    },
+  },
 
 methods:{
    cardMusic() {
@@ -36,9 +52,15 @@ methods:{
            this.cards = result.data.response;
 
         })
+    },
+    searching(lista){
+        this.search = lista
+        console.log(this.search);
+      }
     }
 }
-}
+
+
 
 </script>
 
