@@ -1,6 +1,6 @@
 <template>
     <div>
-        <select name="name" v-model="lista" @change="$emit('search', lista)">
+        <select v-model="lista" @change="$emit('search', lista)">
             <option :value="'all'">All</option>
             <option :value="'metal'">Metal</option>
             <option :value="'jazz'">Jazz</option>
@@ -28,8 +28,6 @@ export default {
     display: flex;
     justify-content: center;
     width: 10%;
-    height: 20px;
-    padding-bottom: 15px;
     h3 {
         color: white;
         margin-right: 10px;
