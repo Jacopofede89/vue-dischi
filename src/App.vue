@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <Header/>
-    <Main @search="searching"/>
-    <FilterAlbum :Object="search"/>
+    <Header />
+    <div id="selector">
+      <FilterAlbum @search="searching"/>
+    </div>
+    <Main :genre="search" />
   </div>
 </template>
 
@@ -18,6 +20,17 @@ export default {
     Main,
     FilterAlbum
   },
+  data() {
+    return {
+      search: "",
+    }
+  },
+  methods: {
+    searching(lista) {
+      this.search = lista;
+      console.log(this.search);
+    },
+  }
 };
 </script>
 
@@ -27,6 +40,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+#selector{
+  background-color: rgba(30, 45, 59, 255);
 }
 *{
   margin:0;

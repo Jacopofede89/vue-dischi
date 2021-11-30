@@ -1,11 +1,11 @@
 <template>
     <div>
-        <select v-model="lista" @change="$emit('search', lista)">
-            <option value="'all'">All</option>
-            <option value="'metal'">Metal</option>
-            <option value="'jazz'">Jazz</option>
-            <option value="'rock'">Rock</option>
-            <option value="'pop'">Pop</option>
+        <select v-model="genre" @change="$emit('search', genre)">
+            <option value="all">All</option>
+            <option value="metal">Metal</option>
+            <option value="jazz">Jazz</option>
+            <option value="rock">Rock</option>
+            <option value="pop">Pop</option>
         </select>
     </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   name: "FilterAlbum",
   data(){
       return{
-          lista:""
+          genre: ""
       }
   }
 
