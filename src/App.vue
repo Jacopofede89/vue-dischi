@@ -1,19 +1,22 @@
 <template>
   <div id="app">
     <Header/>
-    <Main/>
+    <Main @search="searching"/>
+    <FilterAlbum :Object="search"/>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import Main from "./components/Main.vue";
+import FilterAlbum from "./components/FilterAlbum.vue";
 
 export default {
   name: "App",
   components: {
     Header,
     Main,
+    FilterAlbum
   },
 };
 </script>

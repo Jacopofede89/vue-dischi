@@ -1,7 +1,7 @@
 <template>
       <section>
           <div id="selector">
-          <FilterAlbum @search="searching"/>
+          <!-- <FilterAlbum @search="searching"/> -->
           </div>
           <div v-if="cards.length===0">LOADING</div>
           <div v-else id="list">
@@ -14,14 +14,17 @@
 </template>
 
 <script>
-import FilterAlbum from '@/components/FilterAlbum.vue'
+// import FilterAlbum from '@/components/FilterAlbum.vue'-- prima ex
 import axios from "axios";
 import Maincards from "@/components/Maincards.vue";
 export default {
   name: "Main",
   components: {
       Maincards,
-      FilterAlbum
+    //   FilterAlbum -- prima ex
+  },
+  props: {
+    Object: String,
   },
  data() {
       return{
